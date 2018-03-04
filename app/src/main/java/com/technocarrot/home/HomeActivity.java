@@ -21,6 +21,7 @@ public class HomeActivity extends AppCompatActivity {
         SharedPreferenceUtils.setIntDataInShare(this, Constants.isLogged,1);
         WebView webView = (WebView) findViewById(R.id.webview);
         webView.loadUrl("https://www.reportbee.com/who_we_are");
+        //Commit Checking
     }
 
     public void doSignOut(View view) {
