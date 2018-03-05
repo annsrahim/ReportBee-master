@@ -1,19 +1,14 @@
 package com.technocarrot.reportbee;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 
-import com.technocarrot.Config;
-import com.technocarrot.home.HomeActivity;
+import com.technocarrot.student.StudentHomeActivity;
 import com.technocarrot.loginRegister.LoginActivity;
+import com.technocarrot.teacher.TeacherHomeActivity;
 import com.technocarrot.utils.Constants;
 import com.technocarrot.utils.SharedPreferenceUtils;
-import com.technocarrot.utils.Utilities;
-
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else
         {
-            Intent intent  = new Intent(this, HomeActivity.class);
+            Intent intent  = new Intent(this, TeacherHomeActivity.class);
             startActivity(intent);
         }
 

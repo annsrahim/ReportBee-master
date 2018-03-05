@@ -3,8 +3,10 @@ package com.technocarrot.utils;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.os.Build;
@@ -19,11 +21,22 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.technocarrot.Config;
+import com.technocarrot.beans.UserInfoBean;
+import com.technocarrot.loginRegister.LoginActivity;
+import com.technocarrot.service.APIClient;
+import com.technocarrot.service.APIInterface;
+import com.technocarrot.service.APIUserClient;
+import com.technocarrot.student.StudentHomeActivity;
+import com.technocarrot.teacher.TeacherHomeActivity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by Anns on 08/02/18.
@@ -122,6 +135,66 @@ public class Utilities {
         } else {
             return true;
         }
+    }
+
+    public static void goToLoginactivity(final Context context)
+    {
+        Intent intent = new Intent(context, LoginActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void signOut(final Context context)
+    {
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which){
+                    case DialogInterface.BUTTON_POSITIVE:
+                            goToLoginactivity(context);
+                        break;
+
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        //No button clicked
+                        dialog.dismiss();
+                        break;
+                }
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setMessage("Are you sure want to Sign Out?").setPositiveButton("Yes", dialogClickListener)
+                .setNegativeButton("No", dialogClickListener).show();
+    }
+
+    public static void getUserInfo(final Context context)
+    {
+        final ProgressDialog progressDialog;
+        APIInterface apiInterface =  APIUserClient.getClient(context).create(APIInterface.class);
+        progressDialog  = LoadingDialog.show(context,"Getting User Details...");
+        Call<UserInfoBean> userInfoBeanCall = apiInterface.doGetUserInfo();
+        userInfoBeanCall.enqueue(new Callback<UserInfoBean>() {
+            @Override
+            public void onResponse(Call<UserInfoBean> call, Response<UserInfoBean> response) {
+                progressDialog.dismiss();
+                String role = response.body().getData().getRoles().get(0).getName();
+                if(role.equalsIgnoreCase("teacher"))
+                {
+                    Intent intent = new Intent(context, TeacherHomeActivity.class);
+                    context.startActivity(intent);
+                }
+                else
+                {
+                    Intent intent = new Intent(context, StudentHomeActivity.class);
+                    context.startActivity(intent);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserInfoBean> call, Throwable t) {
+                progressDialog.dismiss();
+                Utilities.showToast(context,"Unable to get data");
+            }
+        });
     }
 
 }

@@ -1,10 +1,12 @@
 package com.technocarrot.service;
 
 import com.technocarrot.beans.TokenBean;
+import com.technocarrot.beans.UserInfoBean;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 /**
@@ -31,6 +33,9 @@ public interface APIInterface {
                                    @Field("role") String role
 
     );
+
+    @GET("api/v1/user")
+    Call<UserInfoBean> doGetUserInfo();
 
 
 }

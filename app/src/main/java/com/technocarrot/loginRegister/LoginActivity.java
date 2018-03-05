@@ -9,7 +9,8 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.technocarrot.Config;
-import com.technocarrot.home.HomeActivity;
+import com.technocarrot.student.StudentHomeActivity;
+import com.technocarrot.teacher.TeacherHomeActivity;
 import com.technocarrot.utils.Constants;
 import com.technocarrot.utils.LoadingDialog;
 import com.technocarrot.utils.SharedPreferenceUtils;
@@ -67,8 +68,10 @@ public class LoginActivity extends AppCompatActivity {
                         SharedPreferenceUtils.setStringDataInShare(LoginActivity.this, Constants.ACCESS_TOKEN,response.body().getAccessToken());
                         SharedPreferenceUtils.setStringDataInShare(LoginActivity.this, Constants.EXPIRES_IN,response.body().getExpiresIn());
                         SharedPreferenceUtils.setStringDataInShare(LoginActivity.this, Constants.REFRESH_TOKEN,response.body().getRefreshToken());
-                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                        startActivity(intent);
+                       SharedPreferenceUtils.setIntDataInShare(LoginActivity.this,Constants.isLogged,1);
+                        Utilities.getUserInfo(LoginActivity.this);
+//                        Intent intent = new Intent(LoginActivity.this, TeacherHomeActivity.class);
+//                        startActivity(intent);
                     }
                     else
                     {

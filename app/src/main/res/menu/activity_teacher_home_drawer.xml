@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_insights"
+            android:title="Insights" />
+        <item
+            android:id="@+id/nav_records"
+            android:title="Records" />
+        <item
+            android:id="@+id/nav_reports"
+            android:title="Reports" />
+        <item
+            android:id="@+id/nav_marksheets"
+            android:title="Consolidated Marksheets" />
+        <item
+            android:id="@+id/nav_attendance"
+            android:title="Attendance" />
+        <item
+            android:id="@+id/nav_quizzup"
+            android:title="Quizzup" />
+        <item
+            android:id="@+id/nav_messages"
+            android:title="Messages" />
+        <item
+            android:id="@+id/nav_crystal"
+            android:title="Crystal" />
+        <item
+            android:id="@+id/nav_healthcard"
+            android:title="Thinking Health card" />
+
+
+
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+        </menu>
+    </item>
+
+</menu>

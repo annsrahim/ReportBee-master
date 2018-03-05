@@ -4,6 +4,11 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="WHITE">#FFFFFF</color>
+    <color name="BLACK">#000000</color>
     <color name="bg_blue_light">#56E0C9</color>
     <color name="text_green">#005A51</color>
+    <color name="background_grey">#E6E6E6</color>
+    <color name="toolbar_green">#00A395</color>
+    <color name="text_blue">#478DC7</color>
+    <color name="background_grey_light">#F2F2F2</color>
 </resources>

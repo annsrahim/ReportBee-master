@@ -7,6 +7,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
     <style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:bottomBright">@color/WHITE</item>
         <item name="android:bottomDark">@color/WHITE</item>
@@ -19,5 +20,9 @@
         <item name="android:topBright">@color/colorPrimary</item>
         <item name="android:topDark">@color/colorPrimary</item>
     </style>
+
+    <style name="AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

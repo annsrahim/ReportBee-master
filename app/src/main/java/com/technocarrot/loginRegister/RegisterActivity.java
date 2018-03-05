@@ -10,12 +10,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
-import com.technocarrot.Config;
 import com.technocarrot.beans.TokenBean;
-import com.technocarrot.home.HomeActivity;
+import com.technocarrot.student.StudentHomeActivity;
 import com.technocarrot.reportbee.R;
 import com.technocarrot.service.APIClient;
 import com.technocarrot.service.APIInterface;
+import com.technocarrot.teacher.TeacherHomeActivity;
 import com.technocarrot.utils.Constants;
 import com.technocarrot.utils.LoadingDialog;
 import com.technocarrot.utils.SharedPreferenceUtils;
@@ -96,12 +96,12 @@ public class RegisterActivity extends AppCompatActivity {
                         SharedPreferenceUtils.setStringDataInShare(RegisterActivity.this, Constants.ACCESS_TOKEN,response.body().getAccessToken());
                         SharedPreferenceUtils.setStringDataInShare(RegisterActivity.this, Constants.EXPIRES_IN,response.body().getExpiresIn());
                         SharedPreferenceUtils.setStringDataInShare(RegisterActivity.this, Constants.REFRESH_TOKEN,response.body().getRefreshToken());
-                        Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
-                        startActivity(intent);
+                        SharedPreferenceUtils.setIntDataInShare(RegisterActivity.this,Constants.isLogged,1);
+                        Utilities.getUserInfo(RegisterActivity.this);
                     }
                     else
                     {
-//                        Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
+//                        Intent intent = new Intent(RegisterActivity.this, TeacherHomeActivity.class);
 //                        startActivity(intent);
                         Utilities.showToast(RegisterActivity.this,"Email already exists Please try with different email");
                     }

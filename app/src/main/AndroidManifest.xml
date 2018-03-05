@@ -20,15 +20,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.technocarrot.loginRegister.LoginActivity">
-
-        </activity>
-        <activity android:name="com.technocarrot.loginRegister.RegisterActivity">
-
-        </activity>
-        <activity android:name="com.technocarrot.home.HomeActivity">
-
-        </activity>
+        <activity android:name="com.technocarrot.loginRegister.LoginActivity" />
+        <activity android:name="com.technocarrot.loginRegister.RegisterActivity" />
+        <activity
+            android:name="com.technocarrot.student.StudentHomeActivity"
+            android:label="@string/title_activity_student_home"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name="com.technocarrot.teacher.TeacherHomeActivity"
+            android:label="@string/title_activity_teacher_home"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
     </application>
 
 </manifest>
