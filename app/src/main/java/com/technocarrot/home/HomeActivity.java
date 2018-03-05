@@ -22,6 +22,7 @@ public class HomeActivity extends AppCompatActivity {
         WebView webView = (WebView) findViewById(R.id.webview);
         webView.loadUrl("https://www.reportbee.com/who_we_are");
         //Commit Checking
+        //Commit iOs Checking
     }
 
     public void doSignOut(View view) {
